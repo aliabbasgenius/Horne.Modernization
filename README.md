@@ -6,6 +6,39 @@ A modern Azure Functions application built with .NET 9.
 
 - **Horne.Functions.App** - Azure Functions application with .NET 9
 - **Horne.Modernization.sln** - Solution file containing all projects
+- **Functions/** - Directory containing all Azure Function implementations
+  - **HttpTriggerFunction.cs** - HTTP-triggered functions for API endpoints
+  - **TimerTriggerFunction.cs** - Timer-triggered functions for scheduled tasks
+  - **BlobTriggerFunction.cs** - Blob-triggered functions for file processing
+  - **QueueTriggerFunction.cs** - Queue-triggered functions for message processing
+
+## Available Functions
+
+### HTTP Trigger Functions
+
+- **GetWelcomeMessage** - `GET /api/GetWelcomeMessage` - Returns welcome message with environment info
+- **CreateUser** - `POST /api/CreateUser` - Creates a new user with validation
+- **GetUserById** - `GET /api/users/{id}` - Retrieves user information by ID
+- **HealthCheck** - `GET /api/HealthCheck` - Health check endpoint (anonymous access)
+
+### Timer Trigger Functions
+
+- **DataProcessingJob** - Runs every 5 minutes for data processing
+- **DailyReportGeneration** - Runs daily at 2 AM for report generation
+- **WeeklyCleanupJob** - Runs every Monday at 9 AM for cleanup tasks
+- **MonthlyArchiveJob** - Runs on the first day of each month for archival
+
+### Blob Trigger Functions
+
+- **ProcessUploadedImage** - Processes images uploaded to `images/` container
+- **ProcessUploadedDocument** - Processes documents uploaded to `documents/` container
+- **ArchiveOldFiles** - Archives files older than 30 days from `temp/` container
+
+### Queue Trigger Functions
+
+- **ProcessEmailQueue** - Processes email requests from `email-queue`
+- **ProcessNotificationQueue** - Processes notifications from `notification-queue`
+- **ProcessOrderQueue** - Processes orders from `order-processing` queue
 
 ## Prerequisites
 
@@ -103,7 +136,37 @@ The project includes the following key dependencies:
 
 - **Microsoft.Azure.Functions.Worker**: Azure Functions worker SDK
 - **Microsoft.Azure.Functions.Worker.Sdk**: Build and publish support
-- **Microsoft.Azure.Functions.Worker.Extensions.Http**: HTTP trigger support
+- **Microsoft.Azure.Functions.Worker.Extensions.Http.AspNetCore**: HTTP trigger support
+- **Microsoft.Azure.Functions.Worker.Extensions.Timer**: Timer trigger support
+- **Microsoft.Azure.Functions.Worker.Extensions.Storage.Blobs**: Blob trigger support
+- **Microsoft.Azure.Functions.Worker.Extensions.Storage.Queues**: Queue trigger support
+
+## Testing Functions Locally
+
+To test the functions locally, you can use tools like:
+
+- **HTTP Functions**: Use curl, Postman, or browser for GET requests
+- **Timer Functions**: Will run automatically based on their schedule
+- **Blob Functions**: Upload files to the local storage emulator containers
+- **Queue Functions**: Add messages to queues using Azure Storage Explorer
+
+### Example HTTP Requests
+
+```bash
+# Health check
+curl http://localhost:7071/api/HealthCheck
+
+# Get welcome message
+curl http://localhost:7071/api/GetWelcomeMessage
+
+# Create user
+curl -X POST http://localhost:7071/api/CreateUser \
+  -H "Content-Type: application/json" \
+  -d '{"name":"John Doe","email":"john@example.com"}'
+
+# Get user by ID
+curl http://localhost:7071/api/users/12345678-1234-1234-1234-123456789012
+```
 
 ## Resources
 
