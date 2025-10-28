@@ -1,23 +1,33 @@
-<section class="user-management">
-	<mat-card appearance="outlined" class="toolbar-card">
+<section class="user-management px-4 lg:px-0">
+	<mat-card
+		appearance="outlined"
+		class="toolbar-card rounded-xl border border-outline-variant bg-surface shadow-card dark:bg-surface-container-low"
+	>
 		<div class="card-header">
 			<div class="card-header-content">
-				<h1>User Management</h1>
-				<p>Maintain your modernization team with full control.</p>
+				<h1 class="text-3xl font-semibold uppercase tracking-[0.25em] text-on-surface">User Management</h1>
+				<p class="text-sm text-on-surface-variant">Maintain your modernization team with full control.</p>
 			</div>
-			<button mat-flat-button color="primary" type="button" (click)="createUser()">
-				<mat-icon>person_add</mat-icon>
+			<button
+				mat-flat-button
+				color="primary"
+				type="button"
+				class="px-6 py-3 font-semibold tracking-[0.18em] uppercase rounded-lg"
+				(click)="createUser()"
+			>
+				<mat-icon class="mr-2">person_add</mat-icon>
 				Add user
 			</button>
 		</div>
 
-		<mat-form-field appearance="outline" class="filter-field">
+		<mat-form-field appearance="outline" class="filter-field mt-2">
 			<mat-label>Search users</mat-label>
 			<input
 				matInput
 				placeholder="Search by name, email, role or status"
 				[value]="filterValue()"
-			(input)="applyFilter($any($event.target).value)"
+				class="placeholder:text-on-surface-variant"
+				(input)="applyFilter($any($event.target).value)"
 			/>
 			<button
 				*ngIf="filterValue()"
@@ -25,6 +35,7 @@
 				matSuffix
 				type="button"
 				aria-label="Clear filter"
+				class="text-on-surface-variant"
 				(click)="clearFilter()"
 			>
 				<mat-icon>clear</mat-icon>
@@ -32,7 +43,10 @@
 		</mat-form-field>
 	</mat-card>
 
-	<mat-card appearance="outlined" class="table-card">
+	<mat-card
+		appearance="outlined"
+		class="table-card rounded-xl border border-outline-variant bg-surface shadow-card dark:bg-surface-container"
+	>
 		<div class="table-wrapper">
 			<table mat-table [dataSource]="dataSource" matSort>
 				<ng-container matColumnDef="name">
@@ -93,7 +107,7 @@
 				</ng-container>
 
 				<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-				<tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+				<tr mat-row *matRowDef="let row; columns: displayedColumns" class="transition"></tr>
 			</table>
 		</div>
 		<mat-paginator
