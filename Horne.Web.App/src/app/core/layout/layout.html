@@ -1,0 +1,23 @@
+<mat-sidenav-container class="layout-container">
+	<mat-sidenav
+		#drawer
+		class="layout-sidenav"
+		[mode]="isHandset() ? 'over' : 'side'"
+		[opened]="!isHandset()"
+	>
+		<app-side-nav (navigate)="onNavigate()"></app-side-nav>
+	</mat-sidenav>
+
+	<mat-sidenav-content class="layout-content-wrapper">
+		<app-header
+			[isHandset]="isHandset()"
+			(menuToggle)="onMenuToggle()"
+		></app-header>
+
+		<section class="layout-content">
+			<router-outlet></router-outlet>
+		</section>
+
+		<app-footer></app-footer>
+	</mat-sidenav-content>
+</mat-sidenav-container>

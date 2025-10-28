@@ -1,0 +1,71 @@
+<h2 mat-dialog-title>{{ title() }}</h2>
+
+<mat-dialog-content>
+	<form [formGroup]="form" class="dialog-form" novalidate>
+		<mat-form-field appearance="outline">
+			<mat-label>Full name</mat-label>
+			<input matInput formControlName="name" placeholder="Enter full name" />
+			<mat-error *ngIf="form.get('name')?.hasError('required')">
+				Name is required.
+			</mat-error>
+			<mat-error *ngIf="form.get('name')?.hasError('minlength')">
+				Name should be at least 3 characters.
+			</mat-error>
+		</mat-form-field>
+
+		<mat-form-field appearance="outline">
+			<mat-label>Email</mat-label>
+			<input
+				matInput
+				formControlName="email"
+				type="email"
+				placeholder="name@example.com"
+			/>
+			<mat-error *ngIf="form.get('email')?.hasError('required')">
+				Email is required.
+			</mat-error>
+			<mat-error *ngIf="form.get('email')?.hasError('email')">
+				Enter a valid email address.
+			</mat-error>
+		</mat-form-field>
+
+		<mat-form-field appearance="outline">
+			<mat-label>Role</mat-label>
+			<mat-select formControlName="role">
+				<mat-option value="Admin">Admin</mat-option>
+				<mat-option value="Manager">Manager</mat-option>
+				<mat-option value="Analyst">Analyst</mat-option>
+				<mat-option value="Viewer">Viewer</mat-option>
+			</mat-select>
+		</mat-form-field>
+
+		<mat-form-field appearance="outline">
+			<mat-label>Status</mat-label>
+			<mat-select formControlName="status">
+				<mat-option value="Active">Active</mat-option>
+				<mat-option value="Invited">Invited</mat-option>
+				<mat-option value="Suspended">Suspended</mat-option>
+			</mat-select>
+		</mat-form-field>
+
+		<mat-form-field appearance="outline">
+			<mat-label>Last active</mat-label>
+					<input
+						matInput
+						type="date"
+						formControlName="lastActive"
+						placeholder="Select date"
+					/>
+			<mat-error *ngIf="form.get('lastActive')?.hasError('required')">
+				Last active date is required.
+			</mat-error>
+		</mat-form-field>
+	</form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+	<button mat-stroked-button type="button" (click)="cancel()">Cancel</button>
+	<button mat-flat-button color="primary" type="button" (click)="save()">
+		Save
+	</button>
+</mat-dialog-actions>

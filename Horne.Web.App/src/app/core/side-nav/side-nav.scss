@@ -1,0 +1,109 @@
+.nav-shell {
+	display: flex;
+	flex-direction: column;
+	gap: 1.75rem;
+	width: 100%;
+	max-width: 100%;
+	min-height: 100%;
+	box-sizing: border-box;
+	padding: 2.25rem 1.75rem;
+	background: rgba(12, 62, 140, 0.04);
+	background-clip: padding-box;
+}
+
+.nav-header {
+	display: flex;
+	align-items: center;
+	gap: 1.25rem;
+	padding: 1.15rem 1.25rem;
+	border-radius: 1rem;
+	background: var(--mat-sys-surface);
+	box-shadow: 0 12px 30px -20px rgba(15, 51, 102, 0.45);
+}
+
+.nav-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 3rem;
+	height: 3rem;
+	border-radius: 1rem;
+	background: rgba(12, 62, 140, 0.18);
+	background: color-mix(in srgb, var(--mat-sys-primary) 18%, transparent);
+	color: var(--mat-sys-primary);
+
+	mat-icon {
+		font-size: 1.75rem;
+	}
+}
+
+.nav-header-text {
+	display: flex;
+	flex-direction: column;
+	gap: 0.35rem;
+}
+
+.nav-title {
+	font-size: 0.95rem;
+	font-weight: 650;
+	letter-spacing: 0.3em;
+	text-transform: uppercase;
+	color: var(--mat-sys-primary);
+}
+
+.nav-sub {
+	font-size: 0.82rem;
+	line-height: 1.4;
+	color: var(--mat-sys-on-surface-variant);
+}
+
+.nav-list {
+	padding: 0;
+	background: transparent;
+}
+
+.nav-item {
+	border-radius: 1rem;
+	margin-inline: 0.25rem;
+	padding: 0.9rem 1rem;
+	transition: background 200ms ease, color 200ms ease;
+}
+
+.nav-item.active,
+.nav-item:hover {
+	background: rgba(12, 62, 140, 0.14);
+	background: color-mix(in srgb, var(--mat-sys-primary) 14%, transparent);
+	color: var(--mat-sys-on-primary-container);
+}
+
+.nav-item mat-icon[matListItemIcon] {
+	margin-inline-end: 0.85rem;
+	font-size: 1.35rem;
+	color: inherit;
+}
+
+
+.nav-item .mat-mdc-list-item-title {
+	font-size: 0.95rem;
+	font-weight: 600;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: var(--mat-sys-on-surface);
+}
+
+.nav-item .mat-mdc-list-item-line {
+	font-size: 0.78rem;
+	color: var(--mat-sys-on-surface-variant);
+	opacity: 0.85;
+}
+
+.nav-item.active .mat-mdc-list-item-title,
+.nav-item:hover .mat-mdc-list-item-title {
+	color: var(--mat-sys-on-primary-container);
+}
+
+.nav-item.active .mat-mdc-list-item-line,
+.nav-item:hover .mat-mdc-list-item-line {
+	color: var(--mat-sys-on-primary-container);
+	opacity: 0.75;
+}

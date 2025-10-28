@@ -1,0 +1,49 @@
+<mat-toolbar class="app-header mat-elevation-z2">
+	<button
+		*ngIf="isHandset"
+		mat-icon-button
+		type="button"
+		class="menu-button"
+		(click)="onMenu()"
+		aria-label="Open navigation"
+	>
+		<mat-icon>menu</mat-icon>
+	</button>
+
+		<div class="brand">
+			<span class="brand-prefix">HORNE</span>
+			<span class="brand-name">MODERNIZATION</span>
+		</div>
+
+	<span class="spacer"></span>
+
+	<button
+		mat-icon-button
+		type="button"
+		(click)="toggleTheme()"
+		[matTooltip]="isDarkTheme() ? 'Switch to light mode' : 'Switch to dark mode'"
+		aria-label="Toggle color theme"
+	>
+		<mat-icon>{{ isDarkTheme() ? 'dark_mode' : 'light_mode' }}</mat-icon>
+	</button>
+
+		<button
+		mat-button
+		type="button"
+		class="user-button"
+		[matMenuTriggerFor]="userMenu"
+		matTooltip="Account options"
+		aria-label="Account menu"
+	>
+		<span class="avatar" aria-hidden="true">{{ initials() }}</span>
+		<span class="user-name">{{ currentUser()?.displayName ?? 'Guest' }}</span>
+		<mat-icon>arrow_drop_down</mat-icon>
+	</button>
+</mat-toolbar>
+
+<mat-menu #userMenu="matMenu">
+	<button mat-menu-item type="button" (click)="onLogout()">
+		<mat-icon>logout</mat-icon>
+		<span>Logout</span>
+	</button>
+</mat-menu>

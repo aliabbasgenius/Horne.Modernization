@@ -1,0 +1,29 @@
+<nav class="nav-shell">
+	<div class="nav-header">
+		<div class="nav-icon">
+			<mat-icon>groups</mat-icon>
+		</div>
+		<div class="nav-header-text">
+			<span class="nav-title">User Management</span>
+			<span class="nav-sub">Manage application users and access</span>
+		</div>
+	</div>
+
+	<mat-nav-list class="nav-list">
+		@for (item of items; track item.route) {
+			<a
+				mat-list-item
+				[routerLink]="item.route"
+				routerLinkActive="active"
+				(click)="onNavigate()"
+				class="nav-item"
+			>
+				<mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+				<span matListItemTitle>{{ item.label }}</span>
+				@if (item.description) {
+					<span matListItemLine>{{ item.description }}</span>
+				}
+			</a>
+		}
+	</mat-nav-list>
+</nav>

@@ -1,0 +1,82 @@
+
+.app-header {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	padding-inline: 1.5rem;
+	background: var(--mat-sys-surface);
+}
+
+.menu-button {
+	margin-inline-end: 0.5rem;
+}
+
+.brand {
+	display: flex;
+	flex-direction: column;
+	line-height: 1;
+	gap: 0.15rem;
+}
+
+.brand-prefix {
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.35em;
+	text-transform: uppercase;
+	color: var(--mat-sys-primary);
+}
+
+.brand-name {
+	font-size: 1rem;
+	font-weight: 700;
+	letter-spacing: 0.24em;
+	text-transform: uppercase;
+	color: var(--mat-sys-on-surface);
+}
+
+.brand-name::before {
+	content: '';
+	display: block;
+	width: 1.75rem;
+	height: 2px;
+	margin-bottom: 0.35rem;
+	background: color-mix(in srgb, var(--mat-sys-primary) 65%, transparent);
+}
+
+.app-title {
+	font-weight: 600;
+	letter-spacing: 0.05rem;
+	text-transform: uppercase;
+}
+
+.spacer {
+	flex: 1 1 auto;
+}
+
+.user-button {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	text-transform: none;
+	padding-inline: 0.75rem 0.5rem;
+}
+
+.avatar {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 2rem;
+	height: 2rem;
+	border-radius: 50%;
+	background: var(--mat-sys-secondary-container);
+	color: var(--mat-sys-on-secondary-container);
+	font-weight: 600;
+	font-size: 0.85rem;
+}
+
+.user-name {
+	max-width: 12rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}

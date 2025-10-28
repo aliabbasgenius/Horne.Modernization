@@ -1,0 +1,29 @@
+.layout-container {
+	height: 100vh;
+	background: var(--mat-sys-surface);
+}
+
+.layout-sidenav {
+	width: 280px;
+	border-inline-end: 1px solid var(--mat-sys-outline-variant);
+}
+
+.layout-content-wrapper {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	background: var(--mat-sys-surface);
+	color: var(--mat-sys-on-surface);
+}
+
+.layout-content {
+	flex: 1 1 auto;
+	padding: clamp(1rem, 2vw + 0.5rem, 2rem);
+	background: var(--mat-sys-surface);
+}
+
+@media (max-width: 768px) {
+	.layout-sidenav {
+		width: 220px;
+	}
+}
